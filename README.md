@@ -1,6 +1,5 @@
-# React custom widget template
+# React custom widget to display random motivational quotes on pages
 
-Starting template for a Happeo Custom widget build with React.
 
 ## Running the app
 
