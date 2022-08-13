@@ -1,11 +1,12 @@
 {
-  "name": "Motivational-Quotes",
+  "name": "motivational-quotes",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --config webpack.config.local.js",
     "build": "webpack --env production",
+    "build:ci": "webpack --env production & webpack --env preprod & webpack --env staging && echo '\n\n🧱🚧🏗️👷👷‍♀️🧑‍🏭🛠️🔩⚒️🔨 Build Success!!\n\n'",
     "start": "webpack serve --env development",
     "pre-commit": "lint-staged",
     "lint": "eslint ."

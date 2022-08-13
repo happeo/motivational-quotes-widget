@@ -1,11 +1,13 @@
 const path = require("path");
+const webpack = require("webpack");
+const { getEnvVariables } = require("./buildUtil");
 
 module.exports = (env) => {
-  const isProd = env.production;
-
+  console.log("🚀 ~ file: webpack.config.js ~ line 37 ~ env", env);
+  const { mode, slug, outputFileName } = getEnvVariables(env);
   return {
     entry: path.join(__dirname, "src", "index.js"),
-    mode: isProd ? "production" : "development",
+    mode,
     module: {
       rules: [
         {
@@ -25,6 +27,11 @@ module.exports = (env) => {
         },
       ],
     },
+    plugins: [
+      new webpack.DefinePlugin({
+        "process.env.slug": JSON.stringify(slug),
+      }),
+    ],
     devServer: {
       contentBase: "./dist",
       hot: false,
@@ -52,7 +59,7 @@ module.exports = (env) => {
       },
     ],
     output: {
-      filename: "bundle.js",
+      filename: outputFileName,
       path: path.resolve(__dirname, "dist"),
     },
   };
